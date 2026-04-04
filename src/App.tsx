@@ -10,7 +10,6 @@ import {
   X
 } from "lucide-react";
 import { useState } from "react";
-import tetrisImg from "./images/tetris.png";
 
 const projects = [
   {
@@ -18,7 +17,7 @@ const projects = [
     title: "Pink Tetris",
     description: "洗練されたピンクのデザインが特徴的な、ブラウザで遊べるテトリスゲーム。",
     tags: ["REACT", "GAME"],
-    image: tetrisImg,
+    image: "/tetris.png",
     colSpan: "md:col-span-12",
     link: "https://tetris-pink-tau.vercel.app/",
     horizontal: true
