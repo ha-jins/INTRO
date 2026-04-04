@@ -10,8 +10,19 @@ import {
   X
 } from "lucide-react";
 import { useState } from "react";
+import tetrisImg from "./images/tetris.png";
 
 const projects = [
+  {
+    id: 0,
+    title: "Pink Tetris",
+    description: "洗練されたピンクのデザインが特徴的な、ブラウザで遊べるテトリスゲーム。",
+    tags: ["REACT", "GAME"],
+    image: tetrisImg,
+    colSpan: "md:col-span-12",
+    link: "https://tetris-pink-tau.vercel.app/",
+    horizontal: true
+  },
   {
     id: 1,
     title: "Nebula Strider",
@@ -162,13 +173,18 @@ export default function App() {
                   viewport={{ once: true }}
                   className={`${project.colSpan} group cursor-pointer`}
                 >
-                  <div className={`bg-surface-container-lowest rounded-xl overflow-hidden transition-all duration-300 hover:scale-[1.01] hover:bg-white shadow-sm hover:shadow-md flex flex-col ${project.horizontal ? 'md:flex-row' : ''}`}>
+                  <a 
+                    href={project.link || "#"} 
+                    target={project.link ? "_blank" : undefined}
+                    rel={project.link ? "noopener noreferrer" : undefined}
+                    className={`bg-surface-container-lowest rounded-xl overflow-hidden transition-all duration-300 hover:scale-[1.01] hover:bg-white shadow-sm hover:shadow-md flex flex-col ${project.horizontal ? 'md:flex-row' : ''}`}
+                  >
                     <div className={`${project.horizontal ? 'md:w-1/2 h-64 md:h-80' : 'aspect-video w-full'} overflow-hidden`}>
                       <img 
                         src={project.image} 
                         alt={project.title}
                         referrerPolicy="no-referrer"
-                        className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                        className="w-full h-full object-cover transition-all duration-700"
                       />
                     </div>
                     <div className={`p-8 ${project.horizontal ? 'md:w-1/2 md:p-12' : 'flex-1'}`}>
@@ -185,13 +201,13 @@ export default function App() {
                       <p className={`text-on-surface-variant font-body ${project.horizontal ? 'text-lg leading-relaxed mb-6' : 'text-sm'}`}>
                         {project.description}
                       </p>
-                      {project.horizontal && (
+                      {(project.horizontal || project.link) && (
                         <span className="text-primary font-bold inline-flex items-center gap-2 group-hover:gap-4 transition-all">
-                          ドキュメントを見る <MoveRight size={20} />
+                          {project.link ? "プロジェクトを見る" : "ドキュメントを見る"} <MoveRight size={20} />
                         </span>
                       )}
                     </div>
-                  </div>
+                  </a>
                 </motion.div>
               ))}
             </div>
