@@ -17,7 +17,7 @@ const projects = [
     title: "Pink Tetris",
     description: "洗練されたピンクのデザインが特徴的な、ブラウザで遊べるテトリスゲーム。",
     tags: ["REACT", "GAME"],
-    image: "/tetris.png",
+    image: "https://ha-jins.github.io/images/tetris.png",
     colSpan: "md:col-span-12",
     link: "https://tetris-pink-tau.vercel.app/",
     horizontal: true
