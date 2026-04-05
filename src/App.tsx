@@ -10,6 +10,8 @@ import {
   X
 } from "lucide-react";
 import { useState } from "react";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import Intoro from "./intoro";
 
 const projects = [
   {
@@ -58,6 +60,17 @@ const skills = [
 ];
 
 export default function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/intoro" element={<Intoro />} />
+      </Routes>
+    </Router>
+  );
+}
+
+function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
@@ -70,17 +83,10 @@ export default function App() {
           </div>
           
           <div className="hidden md:flex items-center gap-8">
-            {[["ホーム", "home"], ["プロジェクト", "projects"], ["アバウト", "about"], ["コンタクト", "contact"]].map(([label, id]) => (
-              <a
-                key={id}
-                href={`#${id}`}
-                className={`font-headline tracking-tight font-semibold transition-colors duration-300 ${
-                  id === "home" ? "text-primary border-b-2 border-primary pb-1" : "text-on-surface-variant hover:text-primary"
-                }`}
-              >
-                {label}
-              </a>
-            ))}
+            <a href="#home" className="font-headline tracking-tight font-semibold text-primary border-b-2 border-primary pb-1 transition-colors duration-300">ホーム</a>
+            <a href="#projects" className="font-headline tracking-tight font-semibold text-on-surface-variant hover:text-primary transition-colors duration-300">プロジェクト</a>
+            <Link to="/intoro" className="font-headline tracking-tight font-semibold text-on-surface-variant hover:text-primary transition-colors duration-300">アバウト</Link>
+            <a href="#contact" className="font-headline tracking-tight font-semibold text-on-surface-variant hover:text-primary transition-colors duration-300">コンタクト</a>
           </div>
 
           <div className="flex items-center gap-4">
@@ -103,16 +109,10 @@ export default function App() {
             animate={{ opacity: 1, y: 0 }}
             className="md:hidden bg-white border-b border-on-surface/5 px-6 py-4 flex flex-col gap-4"
           >
-            {[["ホーム", "home"], ["プロジェクト", "projects"], ["アバウト", "about"], ["コンタクト", "contact"]].map(([label, id]) => (
-              <a
-                key={id}
-                href={`#${id}`}
-                className="font-headline font-semibold text-on-surface-variant"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                {label}
-              </a>
-            ))}
+            <a href="#home" className="font-headline font-semibold text-on-surface-variant" onClick={() => setIsMenuOpen(false)}>ホーム</a>
+            <a href="#projects" className="font-headline font-semibold text-on-surface-variant" onClick={() => setIsMenuOpen(false)}>プロジェクト</a>
+            <Link to="/intoro" className="font-headline font-semibold text-on-surface-variant" onClick={() => setIsMenuOpen(false)}>アバウト</Link>
+            <a href="#contact" className="font-headline font-semibold text-on-surface-variant" onClick={() => setIsMenuOpen(false)}>コンタクト</a>
             <button className="bg-primary text-white px-6 py-2 rounded-full font-semibold w-full">
               お問い合わせ
             </button>
